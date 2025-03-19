@@ -37,25 +37,15 @@ namespace material
 		Scalar GetSpecificHeat(Scalar temperature, Scalar pressure) const override;
 		Scalar GetThermalConductivity(Scalar temperature, Scalar pressure) const override;
 		Scalar GetThermalExpansion(Scalar temperature, Scalar pressure) const override;
+		Scalar GetPoissonRatio(Scalar temperature, Scalar pressure) const override;
+		Scalar GetElasticModulus(Scalar temperature, Scalar pressure) const override;
 
 		void SetDensity(IScalar2DPtr value) override;
 		void SetSpecificHeat(IScalar2DPtr value) override;
 		void SetThermalConductivity(IScalar2DPtr value) override;
-
-		Scalar GetPoissonRatio(Scalar temperature, Scalar pressure) const override;
-		Scalar GetElasticModulus(Scalar temperature, Scalar pressure) const override;
-		Scalar GetTensileStrength(Scalar temperature, Scalar pressure) const override;
-		Scalar GetYieldStrength(Scalar temperature, Scalar pressure) const override;
-		Scalar GetShearStrength(Scalar temperature, Scalar pressure) const override;
-		Scalar GetLimitingSurfacePressure(Scalar temperature, Scalar pressure) const override;
-
 		void SetPoissonRatio(IScalar2DPtr value) override;
 		void SetThermalExpansion(IScalar2DPtr value) override;
 		void SetElasticModulus(IScalar2DPtr value) override;
-		void SetTensileStrength(IScalar2DPtr value) override;
-		void SetYieldStrength(IScalar2DPtr value) override;
-		void SetShearStrength(IScalar2DPtr value) override;
-		void SetLimitingSurfacePressure(IScalar2DPtr value) override;
 
 		Matrix A(Scalar temperature, Scalar pressure) const override;
 		Matrix D(Scalar temperature, Scalar pressure) const override;
@@ -78,10 +68,6 @@ namespace material
 		IScalar2DPtr thermalConductivity_{ nullptr };
 		IScalar2DPtr thermalExpansion_{ nullptr };
 		IScalar2DPtr elasticModulus_{ nullptr };
-		IScalar2DPtr tensileStrength_{ nullptr };
-		IScalar2DPtr yieldStrength_{ nullptr };
-		IScalar2DPtr shearStrength_{ nullptr };
-		IScalar2DPtr limitingSurfacePressure_{ nullptr };
 	};
 } // namespace material
 

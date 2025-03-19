@@ -79,6 +79,26 @@ namespace material
 	{
 		return name_->GetValue();
 	}
+	Scalar MaterialFluid::GetDensity(Scalar temperature, Scalar pressure) const
+	{
+		return density_->GetValue(temperature, pressure);
+	}
+	Scalar MaterialFluid::GetSpecificHeat(Scalar temperature, Scalar pressure) const
+	{
+		return specificHeat_->GetValue(temperature, pressure);
+	}
+	Scalar MaterialFluid::GetThermalConductivity(Scalar temperature, Scalar pressure) const
+	{
+		return thermalConductivity_->GetValue(temperature, pressure);
+	}
+	Scalar MaterialFluid::GetDynamicViscosity(Scalar temperature, Scalar pressure) const
+	{
+		return dynamicViscosity_->GetValue(temperature, pressure);
+	}
+	IValuePtr MaterialFluid::GetProperty(String key) const
+	{
+		return properties.at(key);
+	}
 	void MaterialFluid::SetTag(const Tag& tag)
 	{
 		tag_ = tag;
@@ -99,18 +119,6 @@ namespace material
 	{
 		name_ = value;
 	}
-	Scalar MaterialFluid::GetDensity(Scalar temperature, Scalar pressure) const
-	{
-		return density_->GetValue(temperature, pressure);
-	}
-	Scalar MaterialFluid::GetSpecificHeat(Scalar temperature, Scalar pressure) const
-	{
-		return specificHeat_->GetValue(temperature, pressure);
-	}
-	Scalar MaterialFluid::GetThermalConductivity(Scalar temperature, Scalar pressure) const
-	{
-		return thermalConductivity_->GetValue(temperature, pressure);
-	}
 	void MaterialFluid::SetDensity(IScalar2DPtr value)
 	{
 		density_ = value;
@@ -123,13 +131,13 @@ namespace material
 	{
 		thermalConductivity_ = value;
 	}
-	Scalar MaterialFluid::GetDynamicViscosity(Scalar temperature, Scalar pressure) const
-	{
-		return dynamicViscosity_->GetValue(temperature, pressure);
-	}
 	void MaterialFluid::SetDynamicViscosity(IScalar2DPtr value)
 	{
 		dynamicViscosity_ = value;
+	}
+	void MaterialFluid::SetProperty(IValuePtr value)
+	{
+		properties.insert({ value->GetKey(), value });
 	}
 	Matrix MaterialFluid::D(Scalar temperature, Scalar pressure) const
 	{

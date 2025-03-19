@@ -24,10 +24,6 @@ namespace material
 		thermalConductivity_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Thermal Conductivity", "k"));
 		thermalExpansion_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Coefficient Thermal Expansion", "alpha"));
 		elasticModulus_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Young's Modulus", "E"));
-		tensileStrength_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Tensile Strength", "Rm"));
-		yieldStrength_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Yield Strength", "Re"));
-		shearStrength_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Shear Strength", "tau_B"));
-		limitingSurfacePressure_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Limiting Surface Pressure", "p_G"));
 	}
 	MaterialSolidPtr MaterialSolid::Create()
 	{
@@ -127,22 +123,6 @@ namespace material
 	{
 		return elasticModulus_->GetValue(temperature, pressure);
 	}
-	Scalar MaterialSolid::GetTensileStrength(Scalar temperature, Scalar pressure) const
-	{
-		return tensileStrength_->GetValue(temperature, pressure);
-	}
-	Scalar MaterialSolid::GetYieldStrength(Scalar temperature, Scalar pressure) const
-	{
-		return yieldStrength_->GetValue(temperature, pressure);
-	}
-	Scalar MaterialSolid::GetShearStrength(Scalar temperature, Scalar pressure) const
-	{
-		return shearStrength_->GetValue(temperature, pressure);
-	}
-	Scalar MaterialSolid::GetLimitingSurfacePressure(Scalar temperature, Scalar pressure) const
-	{
-		return limitingSurfacePressure_->GetValue(temperature, pressure);
-	}
 	void MaterialSolid::SetPoissonRatio(IScalar2DPtr value)
 	{
 		poissonRatio_ = value;
@@ -154,22 +134,6 @@ namespace material
 	void MaterialSolid::SetElasticModulus(IScalar2DPtr value)
 	{
 		elasticModulus_ = value;
-	}
-	void MaterialSolid::SetTensileStrength(IScalar2DPtr value)
-	{
-		tensileStrength_ = value;
-	}
-	void MaterialSolid::SetYieldStrength(IScalar2DPtr value)
-	{
-		yieldStrength_ = value;
-	}
-	void MaterialSolid::SetShearStrength(IScalar2DPtr value)
-	{
-		shearStrength_ = value;
-	}
-	void MaterialSolid::SetLimitingSurfacePressure(IScalar2DPtr value)
-	{
-		limitingSurfacePressure_ = value;
 	}
 	Matrix MaterialSolid::A(Scalar temperature, Scalar pressure) const
 	{
