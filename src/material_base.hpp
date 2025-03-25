@@ -8,31 +8,6 @@ namespace material
 	static const Type material_solid = 1;
 	static const Type material_fluid = 2;
 
-/*
-		virtual void AddPropertyBool(IBoolPtr value) = 0;
-		virtual void AddPropertyString(IStringPtr value) = 0;
-		virtual void AddPropertyScalar(IScalarPtr value) = 0;
-		virtual void AddPropertyScalar1D(IScalar1DPtr value) = 0;
-		virtual void AddPropertyScalar2D(IScalar2DPtr value) = 0;
-		virtual void AddPropertyScalar3D(IScalar3DPtr value) = 0;
-		virtual void AddPropertyVector(IVectorPtr value) = 0;
-		virtual void AddPropertyVector3D(IVector3DPtr value) = 0;
-		virtual void AddPropertyMatrix(IMatrixPtr value) = 0;
-		virtual void AddPropertyMatrix3D(IMatrix3DPtr value) = 0;
-
-		virtual IBoolPtr GetPropertyBool() = 0;
-		virtual IStringPtr GetPropertyString() = 0;
-		virtual IScalarPtr GetPropertyScalar() = 0;
-		virtual IScalar1DPtr GetPropertyScalar1D() = 0;
-		virtual IScalar2DPtr GetPropertyScalar2D() = 0;
-		virtual IScalar3DPtr GetPropertyScalar3D() = 0;
-		virtual IVectorPtr GetPropertyVector() = 0;
-		virtual IVector3DPtr GetPropertyVector3D() = 0;
-		virtual IMatrixPtr GetPropertyMatrix() = 0;
-		virtual IMatrix3DPtr GetPropertyMatrix3D() = 0;
-
-*/
-
 	class IBase;
 	using IBasePtr = std::shared_ptr<IBase>;
 	using ConstIBasePtr = std::shared_ptr<const IBase>;

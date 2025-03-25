@@ -123,6 +123,10 @@ namespace material
 	{
 		return elasticModulus_->GetValue(temperature, pressure);
 	}
+	IValuePtr MaterialSolid::GetProperty(String key) const
+	{
+		return properties.at(key);
+	}
 	void MaterialSolid::SetPoissonRatio(IScalar2DPtr value)
 	{
 		poissonRatio_ = value;
@@ -134,6 +138,10 @@ namespace material
 	void MaterialSolid::SetElasticModulus(IScalar2DPtr value)
 	{
 		elasticModulus_ = value;
+	}
+	void MaterialSolid::SetProperty(IValuePtr value)
+	{
+		properties.insert({ value->GetKey(), value });
 	}
 	Matrix MaterialSolid::A(Scalar temperature, Scalar pressure) const
 	{
