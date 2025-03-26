@@ -67,6 +67,41 @@ namespace material
 	{
 		return name_->GetValue();
 	}
+	Scalar MaterialSolid::GetDensity(Scalar temperature, Scalar pressure) const
+	{
+		return density_->GetValue(temperature, pressure);
+	}
+	Scalar MaterialSolid::GetPoissonRatio(Scalar temperature, Scalar pressure) const
+	{
+		return poissonRatio_->GetValue(temperature, pressure);
+	}
+	Scalar MaterialSolid::GetSpecificHeat(Scalar temperature, Scalar pressure) const
+	{
+		return specificHeat_->GetValue(temperature, pressure);
+	}
+	Scalar MaterialSolid::GetThermalConductivity(Scalar temperature, Scalar pressure) const
+	{
+		return thermalConductivity_->GetValue(temperature, pressure);
+	}
+	Scalar MaterialSolid::GetThermalExpansion(Scalar temperature, Scalar pressure) const
+	{
+		return thermalExpansion_->GetValue(temperature, pressure);
+	}
+	Scalar MaterialSolid::GetElasticModulus(Scalar temperature, Scalar pressure) const
+	{
+		return elasticModulus_->GetValue(temperature, pressure);
+	}
+	IValuePtr MaterialSolid::GetProperty(String key) const
+	{
+		auto property = properties.find(key);
+
+		if (property == properties.end())
+		{
+			return nullptr;
+		}
+
+		return property->second;
+	}
 	void MaterialSolid::SetTag(const Tag& tag)
 	{
 		tag_ = tag;
@@ -87,22 +122,6 @@ namespace material
 	{
 		name_ = value;
 	}
-	Scalar MaterialSolid::GetDensity(Scalar temperature, Scalar pressure) const
-	{
-		return density_->GetValue(temperature, pressure);
-	}
-	Scalar MaterialSolid::GetPoissonRatio(Scalar temperature, Scalar pressure) const
-	{
-		return poissonRatio_->GetValue(temperature, pressure);
-	}
-	Scalar MaterialSolid::GetSpecificHeat(Scalar temperature, Scalar pressure) const
-	{
-		return specificHeat_->GetValue(temperature, pressure);
-	}
-	Scalar MaterialSolid::GetThermalConductivity(Scalar temperature, Scalar pressure) const
-	{
-		return thermalConductivity_->GetValue(temperature, pressure);
-	}
 	void MaterialSolid::SetDensity(IScalar2DPtr value)
 	{
 		density_ = value;
@@ -114,18 +133,6 @@ namespace material
 	void MaterialSolid::SetThermalConductivity(IScalar2DPtr value)
 	{
 		thermalConductivity_ = value;
-	}
-	Scalar MaterialSolid::GetThermalExpansion(Scalar temperature, Scalar pressure) const
-	{
-		return thermalExpansion_->GetValue(temperature, pressure);
-	}
-	Scalar MaterialSolid::GetElasticModulus(Scalar temperature, Scalar pressure) const
-	{
-		return elasticModulus_->GetValue(temperature, pressure);
-	}
-	IValuePtr MaterialSolid::GetProperty(String key) const
-	{
-		return properties.at(key);
 	}
 	void MaterialSolid::SetPoissonRatio(IScalar2DPtr value)
 	{

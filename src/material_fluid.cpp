@@ -97,7 +97,14 @@ namespace material
 	}
 	IValuePtr MaterialFluid::GetProperty(String key) const
 	{
-		return properties.at(key);
+		auto property = properties.find(key);
+
+		if (property == properties.end())
+		{
+			return nullptr;
+		}
+
+		return property->second;
 	}
 	void MaterialFluid::SetTag(const Tag& tag)
 	{
