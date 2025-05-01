@@ -69,7 +69,7 @@ namespace material
 		IScalar2DPtr thermalConductivity_{ nullptr };
 		IScalar2DPtr dynamicViscosity_{ nullptr };
 
-		Properties properties;
+		Properties properties_;
 	};
 	
 } // namespace material

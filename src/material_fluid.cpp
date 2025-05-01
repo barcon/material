@@ -97,9 +97,9 @@ namespace material
 	}
 	IValuePtr MaterialFluid::GetProperty(String key) const
 	{
-		auto property = properties.find(key);
+		auto property = properties_.find(key);
 
-		if (property == properties.end())
+		if (property == properties_.end())
 		{
 			return nullptr;
 		}
@@ -144,7 +144,7 @@ namespace material
 	}
 	void MaterialFluid::SetProperty(IValuePtr value)
 	{
-		properties.insert({ value->GetKey(), value });
+		properties_.insert({ value->GetKey(), value });
 	}
 	Matrix MaterialFluid::D(Scalar temperature, Scalar pressure) const
 	{

@@ -71,7 +71,7 @@ namespace material
 		IScalar2DPtr thermalExpansion_{ nullptr };
 		IScalar2DPtr elasticModulus_{ nullptr };
 
-		Properties properties;
+		Properties properties_;
 	};
 } // namespace material
 

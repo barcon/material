@@ -93,9 +93,9 @@ namespace material
 	}
 	IValuePtr MaterialSolid::GetProperty(String key) const
 	{
-		auto property = properties.find(key);
+		auto property = properties_.find(key);
 
-		if (property == properties.end())
+		if (property == properties_.end())
 		{
 			return nullptr;
 		}
@@ -148,7 +148,7 @@ namespace material
 	}
 	void MaterialSolid::SetProperty(IValuePtr value)
 	{
-		properties.insert({ value->GetKey(), value });
+		properties_.insert({ value->GetKey(), value });
 	}
 	Matrix MaterialSolid::A(Scalar temperature, Scalar pressure) const
 	{
