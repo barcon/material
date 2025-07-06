@@ -22,12 +22,12 @@ namespace material
 		specificHeat_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Specific Heat", "cp"));
 		thermalConductivity_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Thermal Conductivity", "k"));
 
-		m_ = Matrix(6, 1, 0.0);
+		m_ = Matrix(6, 1, eilig::matrix_zeros);
 		m_(0, 0) = 1.0;
 		m_(1, 0) = 1.0;
 		m_(2, 0) = 1.0;
 
-		I0_ = Matrix(6, 6, 0.0);
+		I0_ = Matrix(6, 6, eilig::matrix_zeros);
 		I0_(0, 0) = 2.0;
 		I0_(1, 1) = 2.0;
 		I0_(2, 2) = 2.0;
@@ -154,7 +154,7 @@ namespace material
 	}
 	Matrix MaterialFluid::K(Scalar temperature, Scalar pressure) const
 	{
-		Matrix res(3, 3, 0.0);
+		Matrix res(3, 3, eilig::matrix_zeros);
 
 		res(0, 0) = GetThermalConductivity(temperature, pressure);
 		res(1, 1) = GetThermalConductivity(temperature, pressure);

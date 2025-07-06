@@ -152,7 +152,7 @@ namespace material
 	}
 	Matrix MaterialSolid::A(Scalar temperature, Scalar pressure) const
 	{
-		Matrix res(6, 1, 0.0);
+		Matrix res(6, 1, eilig::matrix_zeros);
 
 		res(0, 0) = GetThermalExpansion(temperature, pressure);
 		res(1, 0) = res(0, 0);
@@ -165,7 +165,7 @@ namespace material
 		Scalar d;
 		Scalar nu = GetPoissonRatio(temperature, pressure);
 		Scalar E = GetElasticModulus(temperature, pressure);
-		Matrix res(6, 6, 0.0);
+		Matrix res(6, 6, eilig::matrix_zeros);
 
 		d = (1.0 + nu) * (1.0 - 2.0 * nu);
 
@@ -188,7 +188,7 @@ namespace material
 	}
 	Matrix MaterialSolid::K(Scalar temperature, Scalar pressure) const
 	{
-		Matrix res(3, 3, 0.0);
+		Matrix res(3, 3, eilig::matrix_zeros);
 
 		res(0, 0) = GetThermalConductivity(temperature, pressure);
 		res(1, 1) = res(0, 0);
