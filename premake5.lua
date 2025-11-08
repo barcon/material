@@ -13,10 +13,12 @@ project "material"
 	includedirs { "../logger/src" }	
 	includedirs { "../eilig/src" }	
 	includedirs { "../basis/src" }	
-	includedirs { "../nodes/src" }	
+	includedirs { "../node/src" }	
 	includedirs { "../kdtree/src" }	
 	includedirs { "../interpolation/src" }	
 	includedirs { "../values/src" }
+	includedirs { "../lua/include" }
+	includedirs { "../sol2/include" }
 
 	files { "src/**.hpp", "src/**.cpp" }
 

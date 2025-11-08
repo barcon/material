@@ -10,6 +10,35 @@ namespace material
 
 		return res;
 	}
+	MaterialFluidPtr CreateMaterialFluidFromLua(Tag materialTag, String luaFile)
+	{
+		auto res = MaterialFluid::Create();
+		auto lua = Lua();
+
+		lua.open_libraries(sol::lib::base, sol::lib::package);
+		lua.script_file(luaFile);
+
+		auto material = lua["material"];
+		String clas = lua["material"]["class"];
+		//String group = material["group"];
+		//String description = material["description"];
+		//String name = material["name"];
+
+		if (clas != "Fluid")
+		{
+			logger::Error(headerMaterial, "Material is not a fluid");
+			return res;
+		}
+
+		res->SetTag(materialTag);
+		res->SetClass(values::CreateValueString(clas));
+		//res->SetGroup(values::CreateValueString(group));
+		//res->SetDescription(values::CreateValueString(description));
+		//res->SetName(values::CreateValueString(name));
+		res->SetLuaState(std::move(lua));
+
+		return res;
+	}
 	MaterialFluid::MaterialFluid()
 	{
 		class_ = std::dynamic_pointer_cast<values::IString>(values::CreateValueString("", "Class", "class"));
@@ -161,6 +190,10 @@ namespace material
 		res(2, 2) = GetThermalConductivity(temperature, pressure);
 
 		return res;
+	}
+	void MaterialFluid::SetLuaState(Lua lua)
+	{
+		lua_ = std::move(lua);
 	}
 
 } // namespace material

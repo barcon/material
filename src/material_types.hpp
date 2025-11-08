@@ -10,6 +10,9 @@
 #include <variant>
 #include <unordered_map>
 
+#define SOL_ALL_SAFETIES_ON 1
+#include <sol/sol.hpp>
+
 namespace material
 {
 	using Scalar = eilig::Scalar;
@@ -38,7 +41,9 @@ namespace material
 	using Type = std::size_t;
 	using Status = long long int;
 
-	const String materialLogger = "MATERIAL";
+	const String headerMaterial = "MATERIAL";
+
+	using Lua = sol::state;
 
 } // namespace material
 
