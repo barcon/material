@@ -17,8 +17,6 @@ project "material"
 	includedirs { "../kdtree/src" }	
 	includedirs { "../interpolation/src" }	
 	includedirs { "../values/src" }
-	includedirs { "../lua/include" }
-	includedirs { "../sol2/include" }
 
 	files { "src/**.hpp", "src/**.cpp" }
 

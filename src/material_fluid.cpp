@@ -10,102 +10,6 @@ namespace material
 
 		return res;
 	}
-	MaterialFluidPtr CreateMaterialFluidFromLua(Tag materialTag, String luaFile)
-	{
-		auto res = MaterialFluid::Create();
-		auto lua = Lua();
-
-		lua.open_libraries(sol::lib::base, sol::lib::package);
-		lua.script_file(luaFile);
-
-		if (lua["material"].get_type() == sol::type::table)
-		{
-			res->SetClass(values::CreateValueString(lua["material"]["class"].get_or<String>("")));
-			res->SetGroup(values::CreateValueString(lua["material"]["group"].get_or<String>("")));
-			res->SetDescription(values::CreateValueString(lua["material"]["description"].get_or<String>("")));
-			res->SetName(values::CreateValueString(lua["material"]["name"].get_or<String>("")));
-
-			if (lua["material"]["properties"].get_type() == sol::type::table)
-			{
-				switch (lua["material"]["properties"]["specificHeat"].get_type())
-				{
-				case sol::type::number:
-					res->SetSpecificHeat(values::CreateValueScalar2D(lua["material"]["properties"]["specificHeat"]));
-					break;
-				case sol::type::function:
-				{
-					sol::function fx = lua["material"]["properties"]["specificHeat"];
-					std::function<Scalar(Scalar, Scalar)> function_D_DD = fx;
-					res->SetSpecificHeat(values::CreateValueScalar2DFunction(function_D_DD));
-					break;
-				}
-				default:
-					res->SetSpecificHeat(values::CreateValueScalar2D(0.0));
-					logger::Info(headerMaterial, "Materal does not specify specific heat");
-					break;
-				}
-
-				switch (lua["material"]["properties"]["density"].get_type())
-				{
-				case sol::type::number:
-					res->SetDensity(values::CreateValueScalar2D(lua["material"]["properties"]["density"]));
-					break;
-				case sol::type::function:
-				{
-					sol::function fx = lua["material"]["properties"]["density"];
-					std::function<Scalar(Scalar, Scalar)> function_D_DD = fx;
-					res->SetDensity(values::CreateValueScalar2DFunction(function_D_DD));
-					break;
-				}
-				default:
-					res->SetDensity(values::CreateValueScalar2D(0.0));
-					logger::Info(headerMaterial, "Materal does not specify density");
-					break;
-				}
-
-				switch (lua["material"]["properties"]["dynamicViscosity"].get_type())
-				{
-				case sol::type::number:
-					res->SetDynamicViscosity(values::CreateValueScalar2D(lua["material"]["properties"]["dynamicViscosity"]));
-					break;
-				case sol::type::function:
-				{
-					sol::function fx = lua["material"]["properties"]["dynamicViscosity"];
-					std::function<Scalar(Scalar, Scalar)> function_D_DD = fx;
-					res->SetDynamicViscosity(values::CreateValueScalar2DFunction(function_D_DD));
-					break;
-				}
-				default:
-					res->SetDynamicViscosity(values::CreateValueScalar2D(0.0));
-					logger::Info(headerMaterial, "Materal does not specify dynamic viscosity");
-					break;
-				}
-			
-				switch (lua["material"]["properties"]["thermalConductivity"].get_type())
-				{
-				case sol::type::number:
-					res->SetThermalConductivity(values::CreateValueScalar2D(lua["material"]["properties"]["thermalConductivity"]));
-					break;
-				case sol::type::function:
-				{
-					sol::function fx = lua["material"]["properties"]["thermalConductivity"];
-					std::function<Scalar(Scalar, Scalar)> function_D_DD = fx;
-					res->SetThermalConductivity(values::CreateValueScalar2DFunction(function_D_DD));
-					break;
-				}
-				default:
-					res->SetThermalConductivity(values::CreateValueScalar2D(0.0));
-					logger::Info(headerMaterial, "Materal does not specify thermal conductivity");
-					break;
-				}
-			}
-		}
-	
-		res->SetTag(materialTag);
-		res->SetLuaState(std::move(lua));
-
-		return res;
-	}
 	MaterialFluid::MaterialFluid()
 	{
 		class_ = std::dynamic_pointer_cast<values::IString>(values::CreateValueString("", "Class", "class"));
@@ -258,9 +162,4 @@ namespace material
 
 		return res;
 	}
-	void MaterialFluid::SetLuaState(Lua lua)
-	{
-		lua_ = std::move(lua);
-	}
-
 } // namespace material

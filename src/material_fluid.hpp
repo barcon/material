@@ -11,7 +11,6 @@ namespace material
 	using ConstMaterialFluidPtr = std::shared_ptr< const MaterialFluid >;
 
 	MaterialFluidPtr CreateMaterialFluid(Tag materialTag);
-	MaterialFluidPtr CreateMaterialFluidFromLua(Tag materialTag, String luaFile);
 
 	class MaterialFluid : public IMaterialFluid, virtual public std::enable_shared_from_this<MaterialFluid>
 	{
@@ -50,8 +49,6 @@ namespace material
 		Matrix D(Scalar temperature, Scalar pressure) const override;
 		Matrix K(Scalar temperature, Scalar pressure) const override;
 
-		void SetLuaState(Lua lua);
-
 	protected:
 		MaterialFluid();
 
@@ -73,8 +70,6 @@ namespace material
 		IScalar2DPtr dynamicViscosity_{ nullptr };
 
 		Properties properties_;
-
-		Lua lua_;
 	};
 	
 } // namespace material

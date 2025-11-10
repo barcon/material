@@ -56,7 +56,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\utils\src;..\..\logger\src;..\..\eilig\src;..\..\basis\src;..\..\node\src;..\..\kdtree\src;..\..\interpolation\src;..\..\values\src;..\..\lua\include;..\..\sol2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\utils\src;..\..\logger\src;..\..\eilig\src;..\..\basis\src;..\..\node\src;..\..\kdtree\src;..\..\interpolation\src;..\..\values\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -72,7 +72,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\utils\src;..\..\logger\src;..\..\eilig\src;..\..\basis\src;..\..\node\src;..\..\kdtree\src;..\..\interpolation\src;..\..\values\src;..\..\lua\include;..\..\sol2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\utils\src;..\..\logger\src;..\..\eilig\src;..\..\basis\src;..\..\node\src;..\..\kdtree\src;..\..\interpolation\src;..\..\values\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -91,11 +91,13 @@
     <ClInclude Include="..\src\material.hpp" />
     <ClInclude Include="..\src\material_base.hpp" />
     <ClInclude Include="..\src\material_fluid.hpp" />
+    <ClInclude Include="..\src\material_fluid_mineral_oil.hpp" />
     <ClInclude Include="..\src\material_solid.hpp" />
     <ClInclude Include="..\src\material_types.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\material_fluid.cpp" />
+    <ClCompile Include="..\src\material_fluid_mineral_oil.cpp" />
     <ClCompile Include="..\src\material_solid.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
