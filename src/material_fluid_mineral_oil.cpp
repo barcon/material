@@ -26,7 +26,7 @@ namespace material
 		Scalar rho = DensityOil(temperature, pressure);
 		Scalar ISO = 32.0;
 
-		return std::pow(nx * (rho * ISO / (nx * 1.0e+6)), (159.56 / ((temperature - T_ref) + 95.0)) - 0.181913 );
+		return nx * std::pow((rho * ISO / (nx * 1.0e+6)), (159.56 / ((temperature - T_ref) + 95.0)) - 0.181913 );
 	}
 	Scalar DynamicViscosityOilVG46(Scalar temperature, Scalar pressure)
 	{
