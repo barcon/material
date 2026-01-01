@@ -19,6 +19,11 @@ namespace material
 		else
 			return 2910.0 - 1.29 * rho_oil + 4.605 * (temperature - T_ref);
 	}
+	Scalar ThermalConductivityOil(Scalar temperature, Scalar pressure)
+	{
+		return 0.129;
+	}
+	
 	Scalar DynamicViscosityOilVG32(Scalar temperature, Scalar pressure)
 	{
 		Scalar T_ref = 273.15;
@@ -54,10 +59,6 @@ namespace material
 		Scalar ISO = 100.0;
 
 		return nx * std::pow((rho * ISO / (nx * 1.0e+6)), (159.56 / ((temperature - T_ref) + 95.0)) - 0.181913);
-	}
-	Scalar ThermalConductivityOil(Scalar temperature, Scalar pressure)
-	{
-		return 0.129;
 	}
 
 	MaterialFluidPtr CreateOilVG32(Tag materialTag, Scalar T_ref, Scalar p_ref)
