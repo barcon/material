@@ -4,15 +4,15 @@ namespace material
 {
 	Scalar DensityOil(Scalar temperature, Scalar pressure)
 	{
-		Scalar rho_oil = 872.0;
+		Scalar rho_oil = 900.0;
 		Scalar T_oil = 288.15;
 
 		return rho_oil * (1.0 - 0.00065 * (temperature - T_oil));
 	}
 	Scalar SpecificHeatOil(Scalar temperature, Scalar pressure)
 	{
-		Scalar rho_oil = 872.0;
 		Scalar T_ref = 273.15;
+		Scalar rho_oil = DensityOil(T_ref + 15.0, pressure);
 
 		if (DensityOil(temperature, pressure) > 896.0)
 			return 3856.0 - 2.345 * rho_oil + 4.605 * (temperature - T_ref);
