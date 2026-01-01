@@ -46,6 +46,15 @@ namespace material
 
 		return nx * std::pow((rho * ISO / (nx * 1.0e+6)), (159.56 / ((temperature - T_ref) + 95.0)) - 0.181913);
 	}
+	Scalar DynamicViscosityOilVG100(Scalar temperature, Scalar pressure)
+	{
+		Scalar T_ref = 273.15;
+		Scalar nx = 1.8e-4;
+		Scalar rho = DensityOil(temperature, pressure);
+		Scalar ISO = 100.0;
+
+		return nx * std::pow((rho * ISO / (nx * 1.0e+6)), (159.56 / ((temperature - T_ref) + 95.0)) - 0.181913);
+	}
 	Scalar ThermalConductivityOil(Scalar temperature, Scalar pressure)
 	{
 		return 0.129;
@@ -98,6 +107,23 @@ namespace material
 		res->SetSpecificHeat(values::CreateValueScalar2D(SpecificHeatOil(T_ref, p_ref)));
 		res->SetDensity(values::CreateValueScalar2D(DensityOil(T_ref, p_ref)));
 		res->SetDynamicViscosity(values::CreateValueScalar2DFunction(&DynamicViscosityOilVG68));
+		res->SetThermalConductivity(values::CreateValueScalar2D(ThermalConductivityOil(T_ref, p_ref)));
+
+		return res;
+	}
+	MaterialFluidPtr CreateOilVG100(Tag materialTag, Scalar T_ref, Scalar p_ref)
+	{
+		auto res = MaterialFluid::Create();
+
+		res->SetTag(materialTag);
+		res->SetClass(values::CreateValueString("Fluid"));
+		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(values::CreateValueString("Oil ISO VG 100"));
+		res->SetName(values::CreateValueString("Oil ISO VG 100"));
+
+		res->SetSpecificHeat(values::CreateValueScalar2D(SpecificHeatOil(T_ref, p_ref)));
+		res->SetDensity(values::CreateValueScalar2D(DensityOil(T_ref, p_ref)));
+		res->SetDynamicViscosity(values::CreateValueScalar2DFunction(&DynamicViscosityOilVG100));
 		res->SetThermalConductivity(values::CreateValueScalar2D(ThermalConductivityOil(T_ref, p_ref)));
 
 		return res;
