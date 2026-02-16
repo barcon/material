@@ -12,15 +12,37 @@ namespace material
 	}
 	MaterialFluid::MaterialFluid()
 	{
-		class_ = std::dynamic_pointer_cast<values::IString>(values::CreateValueString("", "Class", "class"));
-		group_ = std::dynamic_pointer_cast<values::IString>(values::CreateValueString("", "Group", "group"));
-		description_ = std::dynamic_pointer_cast<values::IString>(values::CreateValueString("", "Description", "description"));
-		name_ = std::dynamic_pointer_cast<values::IString>(values::CreateValueString("", "Name", "name"));
+		class_ = values::CreateValueString("");
+		class_->SetName("Class");
+		class_->SetKey("class");
 
-		density_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Density", "rho"));
-		dynamicViscosity_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Dynamic Viscosity", "mu"));
-		specificHeat_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Specific Heat", "cp"));
-		thermalConductivity_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Thermal Conductivity", "k"));
+		group_ = values::CreateValueString("");
+		group_->SetName("Group");
+		group_->SetKey("group");
+
+		description_ = values::CreateValueString("");
+		description_->SetName("Description");
+		description_->SetKey("description");
+
+		name_ = values::CreateValueString("");
+		name_->SetName("Name");
+		name_->SetKey("name");
+
+		density_ = values::CreateValueScalar2D(0.0);
+		density_->SetName("Density");
+		density_->SetKey("rho");
+
+		specificHeat_ = values::CreateValueScalar2D(0.0);
+		specificHeat_->SetName("Specific Heat");
+		specificHeat_->SetKey("cp");
+
+		thermalConductivity_ = values::CreateValueScalar2D(0.0);
+		thermalConductivity_->SetName("Thermal Conductivity");
+		thermalConductivity_->SetKey("k");
+
+		dynamicViscosity_ = values::CreateValueScalar2D(0.0);
+		dynamicViscosity_->SetName("Dynamic Viscosity");
+		dynamicViscosity_->SetKey("mu");
 
 		m_ = Matrix(6, 1, eilig::matrix_zeros);
 		m_(0, 0) = 1.0;

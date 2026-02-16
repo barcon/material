@@ -13,17 +13,45 @@ namespace material
 	}
 	MaterialSolid::MaterialSolid()
 	{
-		class_ = std::dynamic_pointer_cast<values::IString>(values::CreateValueString("", "Class", "class"));
-		group_ = std::dynamic_pointer_cast<values::IString>(values::CreateValueString("", "Group", "group"));
-		description_ = std::dynamic_pointer_cast<values::IString>(values::CreateValueString("", "Description", "description"));
-		name_ = std::dynamic_pointer_cast<values::IString>(values::CreateValueString("", "Name", "name"));
+		class_ = values::CreateValueString("");
+		class_->SetName("Class");
+		class_->SetKey("class");
+
+		group_ = values::CreateValueString("");
+		group_->SetName("Group");
+		group_->SetKey("group");
+
+		description_ = values::CreateValueString("");
+		description_->SetName("Description");
+		description_->SetKey("description");
+
+		name_ = values::CreateValueString("");
+		name_->SetName("Name");
+		name_->SetKey("name");
 		
-		density_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Density", "rho"));
-		poissonRatio_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Poisson's Ratio", "nu"));
-		specificHeat_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Specific Heat", "cp"));
-		thermalConductivity_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Thermal Conductivity", "k"));
-		thermalExpansion_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Coefficient Thermal Expansion", "alpha"));
-		elasticModulus_ = std::dynamic_pointer_cast<values::IScalar2D>(values::CreateValueScalar2D(0.0, "Young's Modulus", "E"));
+		density_ = values::CreateValueScalar2D(0.0);
+		density_->SetName("Density");
+		density_->SetKey("rho");
+
+		specificHeat_ = values::CreateValueScalar2D(0.0);
+		specificHeat_->SetName("Specific Heat");
+		specificHeat_->SetKey("cp");
+
+		thermalConductivity_ = values::CreateValueScalar2D(0.0);
+		thermalConductivity_->SetName("Thermal Conductivity");
+		thermalConductivity_->SetKey("k");
+		
+		poissonRatio_ = values::CreateValueScalar2D(0.0);
+		poissonRatio_->SetName("Poisson's Ratio");
+		poissonRatio_->SetKey("nu");
+
+		thermalExpansion_ = values::CreateValueScalar2D(0.0);
+		thermalExpansion_->SetName("Coefficient Thermal Expansion");
+		thermalExpansion_->SetKey("alpha");
+
+		elasticModulus_ = values::CreateValueScalar2D(0.0);
+		elasticModulus_->SetName("Young's Modulus");
+		elasticModulus_->SetKey("E");
 	}
 	MaterialSolidPtr MaterialSolid::Create()
 	{
