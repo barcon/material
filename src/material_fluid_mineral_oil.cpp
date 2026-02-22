@@ -1,4 +1,4 @@
-#include "material_fluid.hpp"
+#include "material_fluid_mineral_oil.hpp"
 
 namespace material
 {
@@ -61,6 +61,23 @@ namespace material
 		return nx * std::pow((rho * ISO / (nx * 1.0e+6)), (159.56 / ((temperature - T_ref) + 95.0)) - 0.181913);
 	}
 
+	MaterialFluidPtr CreateOilVG32(Tag materialTag)
+	{
+		auto res = MaterialFluid::Create();
+
+		res->SetTag(materialTag);
+		res->SetClass(values::CreateValueString("Fluid"));
+		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(values::CreateValueString("Oil ISO VG 32"));
+		res->SetName(values::CreateValueString("Oil ISO VG 32"));
+
+		res->SetSpecificHeat(values::CreateValueScalar2DFunction(&SpecificHeatOil));
+		res->SetDensity(values::CreateValueScalar2DFunction(&DensityOil));
+		res->SetDynamicViscosity(values::CreateValueScalar2DFunction(&DynamicViscosityOilVG32));
+		res->SetThermalConductivity(values::CreateValueScalar2DFunction(&ThermalConductivityOil));
+
+		return res;
+	}
 	MaterialFluidPtr CreateOilVG32(Tag materialTag, Scalar T_ref, Scalar p_ref)
 	{
 		auto res = MaterialFluid::Create();
@@ -75,6 +92,24 @@ namespace material
 		res->SetDensity(values::CreateValueScalar2D(DensityOil(T_ref, p_ref)));
 		res->SetDynamicViscosity(values::CreateValueScalar2DFunction(&DynamicViscosityOilVG32));
 		res->SetThermalConductivity(values::CreateValueScalar2D(ThermalConductivityOil(T_ref, p_ref)));
+
+		return res;
+	}
+
+	MaterialFluidPtr CreateOilVG46(Tag materialTag)
+	{
+		auto res = MaterialFluid::Create();
+
+		res->SetTag(materialTag);
+		res->SetClass(values::CreateValueString("Fluid"));
+		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(values::CreateValueString("Oil ISO VG 46"));
+		res->SetName(values::CreateValueString("Oil ISO VG 46"));
+
+		res->SetSpecificHeat(values::CreateValueScalar2DFunction(&SpecificHeatOil));
+		res->SetDensity(values::CreateValueScalar2DFunction(&DensityOil));
+		res->SetDynamicViscosity(values::CreateValueScalar2DFunction(&DynamicViscosityOilVG46));
+		res->SetThermalConductivity(values::CreateValueScalar2DFunction(&ThermalConductivityOil));
 
 		return res;
 	}
@@ -95,6 +130,24 @@ namespace material
 
 		return res;
 	}
+
+	MaterialFluidPtr CreateOilVG68(Tag materialTag)
+	{
+		auto res = MaterialFluid::Create();
+
+		res->SetTag(materialTag);
+		res->SetClass(values::CreateValueString("Fluid"));
+		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(values::CreateValueString("Oil ISO VG 68"));
+		res->SetName(values::CreateValueString("Oil ISO VG 68"));
+
+		res->SetSpecificHeat(values::CreateValueScalar2DFunction(SpecificHeatOil));
+		res->SetDensity(values::CreateValueScalar2DFunction(DensityOil));
+		res->SetDynamicViscosity(values::CreateValueScalar2DFunction(&DynamicViscosityOilVG68));
+		res->SetThermalConductivity(values::CreateValueScalar2DFunction(ThermalConductivityOil));
+
+		return res;
+	}
 	MaterialFluidPtr CreateOilVG68(Tag materialTag, Scalar T_ref, Scalar p_ref)
 	{
 		auto res = MaterialFluid::Create();
@@ -109,6 +162,24 @@ namespace material
 		res->SetDensity(values::CreateValueScalar2D(DensityOil(T_ref, p_ref)));
 		res->SetDynamicViscosity(values::CreateValueScalar2DFunction(&DynamicViscosityOilVG68));
 		res->SetThermalConductivity(values::CreateValueScalar2D(ThermalConductivityOil(T_ref, p_ref)));
+
+		return res;
+	}
+
+	MaterialFluidPtr CreateOilVG100(Tag materialTag)
+	{
+		auto res = MaterialFluid::Create();
+
+		res->SetTag(materialTag);
+		res->SetClass(values::CreateValueString("Fluid"));
+		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(values::CreateValueString("Oil ISO VG 100"));
+		res->SetName(values::CreateValueString("Oil ISO VG 100"));
+
+		res->SetSpecificHeat(values::CreateValueScalar2DFunction(&SpecificHeatOil));
+		res->SetDensity(values::CreateValueScalar2DFunction(&DensityOil));
+		res->SetDynamicViscosity(values::CreateValueScalar2DFunction(&DynamicViscosityOilVG100));
+		res->SetThermalConductivity(values::CreateValueScalar2DFunction(&ThermalConductivityOil));
 
 		return res;
 	}

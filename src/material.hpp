@@ -5,6 +5,7 @@
 #include "material_base.hpp"
 #include "material_fluid.hpp"
 #include "material_fluid_mineral_oil.hpp"
+#include "material_fluid_water.hpp"
 #include "material_solid.hpp"
 
 #endif /* MATERIAL_HPP_*/

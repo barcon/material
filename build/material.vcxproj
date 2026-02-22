@@ -92,12 +92,14 @@
     <ClInclude Include="..\src\material_base.hpp" />
     <ClInclude Include="..\src\material_fluid.hpp" />
     <ClInclude Include="..\src\material_fluid_mineral_oil.hpp" />
+    <ClInclude Include="..\src\material_fluid_water.hpp" />
     <ClInclude Include="..\src\material_solid.hpp" />
     <ClInclude Include="..\src\material_types.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\material_fluid.cpp" />
     <ClCompile Include="..\src\material_fluid_mineral_oil.cpp" />
+    <ClCompile Include="..\src\material_fluid_water.cpp" />
     <ClCompile Include="..\src\material_solid.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

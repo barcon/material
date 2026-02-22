@@ -11,6 +11,20 @@ namespace material
 
 		return res;
 	}
+	MaterialSolidPtr CreateMaterialSolidUnit(Tag materialTag)
+	{
+		auto res = MaterialSolid::Create();
+
+		res->SetTag(materialTag);
+		res->SetDensity(values::CreateValueScalar2D(1.0));
+		res->SetSpecificHeat(values::CreateValueScalar2D(1.0));
+		res->SetPoissonRatio(values::CreateValueScalar2D(1.0));
+		res->SetElasticModulus(values::CreateValueScalar2D(1.0));
+		res->SetThermalExpansion(values::CreateValueScalar2D(1.0));
+		res->SetThermalConductivity(values::CreateValueScalar2D(1.0));
+
+		return res;
+	}
 	MaterialSolid::MaterialSolid()
 	{
 		class_ = values::CreateValueString("");

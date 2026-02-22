@@ -11,6 +11,7 @@ namespace material
 	using ConstMaterialFluidPtr = std::shared_ptr< const MaterialFluid >;
 
 	MaterialFluidPtr CreateMaterialFluid(Tag materialTag);
+	MaterialFluidPtr CreateMaterialFluidUnit(Tag materialTag);
 
 	class MaterialFluid : public IMaterialFluid, virtual public std::enable_shared_from_this<MaterialFluid>
 	{

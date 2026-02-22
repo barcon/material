@@ -10,6 +10,18 @@ namespace material
 
 		return res;
 	}
+	MaterialFluidPtr CreateMaterialFluidUnit(Tag materialTag)
+	{
+		auto res = MaterialFluid::Create();
+
+		res->SetTag(materialTag);
+		res->SetDensity(values::CreateValueScalar2D(1.0));
+		res->SetSpecificHeat(values::CreateValueScalar2D(1.0));
+		res->SetThermalConductivity(values::CreateValueScalar2D(1.0));
+		res->SetDynamicViscosity(values::CreateValueScalar2D(1.0));
+
+		return res;
+	}
 	MaterialFluid::MaterialFluid()
 	{
 		class_ = values::CreateValueString("");
