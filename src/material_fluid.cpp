@@ -15,10 +15,10 @@ namespace material
 		auto res = MaterialFluid::Create();
 
 		res->SetTag(materialTag);
-		res->SetDensity(values::CreateValueScalar2D(1.0));
-		res->SetSpecificHeat(values::CreateValueScalar2D(1.0));
-		res->SetThermalConductivity(values::CreateValueScalar2D(1.0));
-		res->SetDynamicViscosity(values::CreateValueScalar2D(1.0));
+		res->SetDensity(values::CreateValueScalarCoordinates(2, 1.0));
+		res->SetSpecificHeat(values::CreateValueScalarCoordinates(2, 1.0));
+		res->SetThermalConductivity(values::CreateValueScalarCoordinates(2, 1.0));
+		res->SetDynamicViscosity(values::CreateValueScalarCoordinates(2, 1.0));
 
 		return res;
 	}
@@ -40,19 +40,19 @@ namespace material
 		name_->SetName("Name");
 		name_->SetKey("name");
 
-		density_ = values::CreateValueScalar2D(0.0);
+		density_ = values::CreateValueScalarCoordinates(2, 0.0);
 		density_->SetName("Density");
 		density_->SetKey("rho");
 
-		specificHeat_ = values::CreateValueScalar2D(0.0);
+		specificHeat_ = values::CreateValueScalarCoordinates(2, 0.0);
 		specificHeat_->SetName("Specific Heat");
 		specificHeat_->SetKey("cp");
 
-		thermalConductivity_ = values::CreateValueScalar2D(0.0);
+		thermalConductivity_ = values::CreateValueScalarCoordinates(2, 0.0);
 		thermalConductivity_->SetName("Thermal Conductivity");
 		thermalConductivity_->SetKey("k");
 
-		dynamicViscosity_ = values::CreateValueScalar2D(0.0);
+		dynamicViscosity_ = values::CreateValueScalarCoordinates(2, 0.0);
 		dynamicViscosity_->SetName("Dynamic Viscosity");
 		dynamicViscosity_->SetKey("mu");
 
@@ -113,21 +113,21 @@ namespace material
 	{
 		return name_->GetValue();
 	}
-	Scalar MaterialFluid::GetDensity(Scalar temperature, Scalar pressure) const
+	Scalar MaterialFluid::GetDensity(const Vector& state) const
 	{
-		return density_->GetValue(temperature, pressure);
+		return density_->GetValue(state);
 	}
-	Scalar MaterialFluid::GetSpecificHeat(Scalar temperature, Scalar pressure) const
+	Scalar MaterialFluid::GetSpecificHeat(const Vector& state) const
 	{
-		return specificHeat_->GetValue(temperature, pressure);
+		return specificHeat_->GetValue(state);
 	}
-	Scalar MaterialFluid::GetThermalConductivity(Scalar temperature, Scalar pressure) const
+	Scalar MaterialFluid::GetThermalConductivity(const Vector& state) const
 	{
-		return thermalConductivity_->GetValue(temperature, pressure);
+		return thermalConductivity_->GetValue(state);
 	}
-	Scalar MaterialFluid::GetDynamicViscosity(Scalar temperature, Scalar pressure) const
+	Scalar MaterialFluid::GetDynamicViscosity(const Vector& state) const
 	{
-		return dynamicViscosity_->GetValue(temperature, pressure);
+		return dynamicViscosity_->GetValue(state);
 	}
 	IValuePtr MaterialFluid::GetProperty(String key) const
 	{
@@ -160,39 +160,79 @@ namespace material
 	{
 		name_ = value;
 	}
-	void MaterialFluid::SetDensity(IScalar2DPtr value)
+	void MaterialFluid::SetDensity(IScalarCoordinatesPtr value)
 	{
+		if(value == nullptr)
+		{
+			throw std::invalid_argument("Density value cannot be null.");
+		}
+
+		if(value->GetNumberCoordinates() != 2)
+		{
+			throw std::invalid_argument("Density value must have 2 coordinates (temperature and pressure).");
+		}
+
 		density_ = value;
 	}
-	void MaterialFluid::SetSpecificHeat(IScalar2DPtr value)
+	void MaterialFluid::SetSpecificHeat(IScalarCoordinatesPtr value)
 	{
+		if (value == nullptr)
+		{
+			throw std::invalid_argument("Specific Heat value cannot be null.");
+		}
+
+		if (value->GetNumberCoordinates() != 2)
+		{
+			throw std::invalid_argument("Specific Heat value must have 2 coordinates (temperature and pressure).");
+		}
+
 		specificHeat_ = value;
 	}
-	void MaterialFluid::SetThermalConductivity(IScalar2DPtr value)
+	void MaterialFluid::SetThermalConductivity(IScalarCoordinatesPtr value)
 	{
+		if (value == nullptr)
+		{
+			throw std::invalid_argument("Thermal Conductivity value cannot be null.");
+		}
+
+		if (value->GetNumberCoordinates() != 2)
+		{
+			throw std::invalid_argument("Thermal Conductivity value must have 2 coordinates (temperature and pressure).");
+		}
+
 		thermalConductivity_ = value;
 	}
-	void MaterialFluid::SetDynamicViscosity(IScalar2DPtr value)
+	void MaterialFluid::SetDynamicViscosity(IScalarCoordinatesPtr value)
 	{
+		if (value == nullptr)
+		{
+			throw std::invalid_argument("Dynamic Viscosity value cannot be null.");
+		}
+
+		if (value->GetNumberCoordinates() != 2)
+		{
+			throw std::invalid_argument("Specific Heat value must have 2 coordinates (temperature and pressure).");
+		}
+
 		dynamicViscosity_ = value;
 	}
 	void MaterialFluid::SetProperty(IValuePtr value)
 	{
 		properties_.insert({ value->GetKey(), value });
 	}
-	Matrix MaterialFluid::D(Scalar temperature, Scalar pressure) const
+	Matrix MaterialFluid::D(const Vector& state) const
 	{
-		Scalar mu = GetDynamicViscosity(temperature, pressure);
+		Scalar mu = GetDynamicViscosity(state);
 
 		return mu * Id_;
 	}
-	Matrix MaterialFluid::K(Scalar temperature, Scalar pressure) const
+	Matrix MaterialFluid::K(const Vector& state) const
 	{
 		Matrix res(3, 3, eilig::matrix_zeros);
 
-		res(0, 0) = GetThermalConductivity(temperature, pressure);
-		res(1, 1) = GetThermalConductivity(temperature, pressure);
-		res(2, 2) = GetThermalConductivity(temperature, pressure);
+		res(0, 0) = GetThermalConductivity(state);
+		res(1, 1) = GetThermalConductivity(state);
+		res(2, 2) = GetThermalConductivity(state);
 
 		return res;
 	}

@@ -16,12 +16,12 @@ namespace material
 		auto res = MaterialSolid::Create();
 
 		res->SetTag(materialTag);
-		res->SetDensity(values::CreateValueScalar2D(1.0));
-		res->SetSpecificHeat(values::CreateValueScalar2D(1.0));
-		res->SetPoissonRatio(values::CreateValueScalar2D(1.0));
-		res->SetElasticModulus(values::CreateValueScalar2D(1.0));
-		res->SetThermalExpansion(values::CreateValueScalar2D(1.0));
-		res->SetThermalConductivity(values::CreateValueScalar2D(1.0));
+		res->SetDensity(values::CreateValueScalarCoordinates(2, 1.0));
+		res->SetSpecificHeat(values::CreateValueScalarCoordinates(2, 1.0));
+		res->SetPoissonRatio(values::CreateValueScalarCoordinates(2, 1.0));
+		res->SetElasticModulus(values::CreateValueScalarCoordinates(2, 1.0));
+		res->SetThermalExpansion(values::CreateValueScalarCoordinates(2, 1.0));
+		res->SetThermalConductivity(values::CreateValueScalarCoordinates(2, 1.0));
 
 		return res;
 	}
@@ -43,27 +43,27 @@ namespace material
 		name_->SetName("Name");
 		name_->SetKey("name");
 		
-		density_ = values::CreateValueScalar2D(0.0);
+		density_ = values::CreateValueScalarCoordinates(2, 0.0);
 		density_->SetName("Density");
 		density_->SetKey("rho");
 
-		specificHeat_ = values::CreateValueScalar2D(0.0);
+		specificHeat_ = values::CreateValueScalarCoordinates(2, 0.0);
 		specificHeat_->SetName("Specific Heat");
 		specificHeat_->SetKey("cp");
 
-		thermalConductivity_ = values::CreateValueScalar2D(0.0);
+		thermalConductivity_ = values::CreateValueScalarCoordinates(2, 0.0);
 		thermalConductivity_->SetName("Thermal Conductivity");
 		thermalConductivity_->SetKey("k");
 		
-		poissonRatio_ = values::CreateValueScalar2D(0.0);
+		poissonRatio_ = values::CreateValueScalarCoordinates(2, 0.0);
 		poissonRatio_->SetName("Poisson's Ratio");
 		poissonRatio_->SetKey("nu");
 
-		thermalExpansion_ = values::CreateValueScalar2D(0.0);
+		thermalExpansion_ = values::CreateValueScalarCoordinates(2, 0.0);
 		thermalExpansion_->SetName("Coefficient Thermal Expansion");
 		thermalExpansion_->SetKey("alpha");
 
-		elasticModulus_ = values::CreateValueScalar2D(0.0);
+		elasticModulus_ = values::CreateValueScalarCoordinates(2, 0.0);
 		elasticModulus_->SetName("Young's Modulus");
 		elasticModulus_->SetKey("E");
 	}
@@ -109,29 +109,29 @@ namespace material
 	{
 		return name_->GetValue();
 	}
-	Scalar MaterialSolid::GetDensity(Scalar temperature, Scalar pressure) const
+	Scalar MaterialSolid::GetDensity(const Vector& state) const
 	{
-		return density_->GetValue(temperature, pressure);
+		return density_->GetValue(state);
 	}
-	Scalar MaterialSolid::GetPoissonRatio(Scalar temperature, Scalar pressure) const
+	Scalar MaterialSolid::GetPoissonRatio(const Vector& state) const
 	{
-		return poissonRatio_->GetValue(temperature, pressure);
+		return poissonRatio_->GetValue(state);
 	}
-	Scalar MaterialSolid::GetSpecificHeat(Scalar temperature, Scalar pressure) const
+	Scalar MaterialSolid::GetSpecificHeat(const Vector& state) const
 	{
-		return specificHeat_->GetValue(temperature, pressure);
+		return specificHeat_->GetValue(state);
 	}
-	Scalar MaterialSolid::GetThermalConductivity(Scalar temperature, Scalar pressure) const
+	Scalar MaterialSolid::GetThermalConductivity(const Vector& state) const
 	{
-		return thermalConductivity_->GetValue(temperature, pressure);
+		return thermalConductivity_->GetValue(state);
 	}
-	Scalar MaterialSolid::GetThermalExpansion(Scalar temperature, Scalar pressure) const
+	Scalar MaterialSolid::GetThermalExpansion(const Vector& state) const
 	{
-		return thermalExpansion_->GetValue(temperature, pressure);
+		return thermalExpansion_->GetValue(state);
 	}
-	Scalar MaterialSolid::GetElasticModulus(Scalar temperature, Scalar pressure) const
+	Scalar MaterialSolid::GetElasticModulus(const Vector& state) const
 	{
-		return elasticModulus_->GetValue(temperature, pressure);
+		return elasticModulus_->GetValue(state);
 	}
 	IValuePtr MaterialSolid::GetProperty(String key) const
 	{
@@ -164,49 +164,109 @@ namespace material
 	{
 		name_ = value;
 	}
-	void MaterialSolid::SetDensity(IScalar2DPtr value)
+	void MaterialSolid::SetDensity(IScalarCoordinatesPtr value)
 	{
+		if (value == nullptr)
+		{
+			throw std::invalid_argument("Density value cannot be null.");
+		}
+
+		if (value->GetNumberCoordinates() != 2)
+		{
+			throw std::invalid_argument("Density value must have 2 coordinates (temperature and pressure).");
+		}
+
 		density_ = value;
 	}
-	void MaterialSolid::SetSpecificHeat(IScalar2DPtr value)
+	void MaterialSolid::SetSpecificHeat(IScalarCoordinatesPtr value)
 	{
+		if (value == nullptr)
+		{
+			throw std::invalid_argument("Specific Heat value cannot be null.");
+		}
+
+		if (value->GetNumberCoordinates() != 2)
+		{
+			throw std::invalid_argument("Specific Heat value must have 2 coordinates (temperature and pressure).");
+		}
+
 		specificHeat_ = value;
 	}
-	void MaterialSolid::SetThermalConductivity(IScalar2DPtr value)
+	void MaterialSolid::SetThermalConductivity(IScalarCoordinatesPtr value)
 	{
+		if (value == nullptr)
+		{
+			throw std::invalid_argument("Thermal Conductivity value cannot be null.");
+		}
+
+		if (value->GetNumberCoordinates() != 2)
+		{
+			throw std::invalid_argument("Thermal Conductivity value must have 2 coordinates (temperature and pressure).");
+		}
+
 		thermalConductivity_ = value;
 	}
-	void MaterialSolid::SetPoissonRatio(IScalar2DPtr value)
+	void MaterialSolid::SetPoissonRatio(IScalarCoordinatesPtr value)
 	{
+		if (value == nullptr)
+		{
+			throw std::invalid_argument("Poisson Ratio value cannot be null.");
+		}
+
+		if (value->GetNumberCoordinates() != 2)
+		{
+			throw std::invalid_argument("Poisson Ratio value must have 2 coordinates (temperature and pressure).");
+		}
+
 		poissonRatio_ = value;
 	}
-	void MaterialSolid::SetThermalExpansion(IScalar2DPtr value)
+	void MaterialSolid::SetThermalExpansion(IScalarCoordinatesPtr value)
 	{
+		if (value == nullptr)
+		{
+			throw std::invalid_argument("Thermal Expansion value cannot be null.");
+		}
+
+		if (value->GetNumberCoordinates() != 2)
+		{
+			throw std::invalid_argument("Thermal Expansion value must have 2 coordinates (temperature and pressure).");
+		}
+
 		thermalExpansion_ = value;
 	}
-	void MaterialSolid::SetElasticModulus(IScalar2DPtr value)
+	void MaterialSolid::SetElasticModulus(IScalarCoordinatesPtr value)
 	{
+		if (value == nullptr)
+		{
+			throw std::invalid_argument("Elastic Modulus value cannot be null.");
+		}
+
+		if (value->GetNumberCoordinates() != 2)
+		{
+			throw std::invalid_argument("Elastic Modulus value must have 2 coordinates (temperature and pressure).");
+		}
+
 		elasticModulus_ = value;
 	}
 	void MaterialSolid::SetProperty(IValuePtr value)
 	{
 		properties_.insert({ value->GetKey(), value });
 	}
-	Matrix MaterialSolid::A(Scalar temperature, Scalar pressure) const
+	Matrix MaterialSolid::A(const Vector& state) const
 	{
 		Matrix res(6, 1, eilig::matrix_zeros);
 
-		res(0, 0) = GetThermalExpansion(temperature, pressure);
+		res(0, 0) = GetThermalExpansion(state);
 		res(1, 0) = res(0, 0);
 		res(2, 0) = res(0, 0);
 
 		return res;
 	}
-	Matrix MaterialSolid::D(Scalar temperature, Scalar pressure) const
+	Matrix MaterialSolid::D(const Vector& state) const
 	{
 		Scalar d;
-		Scalar nu = GetPoissonRatio(temperature, pressure);
-		Scalar E = GetElasticModulus(temperature, pressure);
+		Scalar nu = GetPoissonRatio(state);
+		Scalar E = GetElasticModulus(state);
 		Matrix res(6, 6, eilig::matrix_zeros);
 
 		d = (1.0 + nu) * (1.0 - 2.0 * nu);
@@ -228,11 +288,11 @@ namespace material
 
 		return (E / d) * res;
 	}
-	Matrix MaterialSolid::K(Scalar temperature, Scalar pressure) const
+	Matrix MaterialSolid::K(const Vector& state) const
 	{
 		Matrix res(3, 3, eilig::matrix_zeros);
 
-		res(0, 0) = GetThermalConductivity(temperature, pressure);
+		res(0, 0) = GetThermalConductivity(state);
 		res(1, 1) = res(0, 0);
 		res(2, 2) = res(0, 0);
 

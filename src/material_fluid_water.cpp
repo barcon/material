@@ -47,10 +47,10 @@ namespace material
 		res->SetDescription(values::CreateValueString("Liquid Water (Air-Free)"));
 		res->SetName(values::CreateValueString("Liquid Water"));
 
-		res->SetSpecificHeat(values::CreateValueScalar2DFunction(SpecificHeatWater));
-		res->SetDensity(values::CreateValueScalar2DFunction(DensityWater));
-		res->SetDynamicViscosity(values::CreateValueScalar2DFunction(&DynamicViscosityWater));
-		res->SetThermalConductivity(values::CreateValueScalar2DFunction(ThermalConductivityWater));
+		res->SetSpecificHeat(values::CreateValueScalarCoordinatesFunction(SpecificHeatWater));
+		res->SetDensity(values::CreateValueScalarCoordinatesFunction(DensityWater));
+		res->SetDynamicViscosity(values::CreateValueScalarCoordinatesFunction(&DynamicViscosityWater));
+		res->SetThermalConductivity(values::CreateValueScalarCoordinatesFunction(ThermalConductivityWater));
 
 		return res;
 	}
@@ -64,10 +64,10 @@ namespace material
 		res->SetDescription(values::CreateValueString("Liquid Water (Air-Free)"));
 		res->SetName(values::CreateValueString("Liquid Water"));
 
-		res->SetSpecificHeat(values::CreateValueScalar2D(SpecificHeatWater(T_ref, p_ref)));
-		res->SetDensity(values::CreateValueScalar2D(DensityWater(T_ref, p_ref)));
-		res->SetDynamicViscosity(values::CreateValueScalar2DFunction(&DynamicViscosityWater));
-		res->SetThermalConductivity(values::CreateValueScalar2D(ThermalConductivityWater(T_ref, p_ref)));
+		res->SetSpecificHeat(values::CreateValueScalarCoordinates(2, SpecificHeatWater(T_ref, p_ref)));
+		res->SetDensity(values::CreateValueScalarCoordinates(2, DensityWater(T_ref, p_ref)));
+		res->SetDynamicViscosity(values::CreateValueScalarCoordinatesFunction(&DynamicViscosityWater));
+		res->SetThermalConductivity(values::CreateValueScalarCoordinates(2, ThermalConductivityWater(T_ref, p_ref)));
 
 		return res;
 	}

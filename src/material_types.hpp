@@ -14,6 +14,8 @@ namespace material
 {
 	using Scalar = eilig::Scalar;
 	using Scalars = eilig::Scalars;
+	using Vector = eilig::Vector;
+	using Vectors = eilig::Vectors;
 	using Matrix = eilig::Matrix;
 	using Matrices = eilig::Matrices;
 
@@ -23,14 +25,14 @@ namespace material
 	using IValuePtr = values::IValuePtr;
 	using IBoolPtr = values::IBoolPtr;
 	using IStringPtr = values::IStringPtr;
+
 	using IScalarPtr = values::IScalarPtr;
-	using IScalar1DPtr = values::IScalar1DPtr;
-	using IScalar2DPtr = values::IScalar2DPtr;
-	using IScalar3DPtr = values::IScalar3DPtr;
 	using IVectorPtr = values::IVectorPtr;
-	using IVector3DPtr = values::IVector3DPtr;
 	using IMatrixPtr = values::IMatrixPtr;
-	using IMatrix3DPtr = values::IMatrix3DPtr;
+
+	using IScalarCoordinatesPtr = values::IScalarCoordinatesPtr;
+	using IVectorCoordinatesPtr = values::IVectorCoordinatesPtr;
+	using IMatrixCoordinatesPtr = values::IMatrixCoordinatesPtr;
 	
 	using Properties = std::unordered_map<String, IValuePtr>;
 

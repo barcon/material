@@ -42,15 +42,15 @@ namespace material
 	public:
 		virtual ~IMaterial() = default;
 
-		virtual Scalar GetDensity(Scalar temperature, Scalar pressure) const = 0;
-		virtual Scalar GetSpecificHeat(Scalar temperature, Scalar pressure) const = 0;
-		virtual Scalar GetThermalConductivity(Scalar temperature, Scalar pressure) const = 0;
+		virtual Scalar GetDensity(const Vector& state) const = 0;
+		virtual Scalar GetSpecificHeat(const Vector& state) const = 0;
+		virtual Scalar GetThermalConductivity(const Vector& state) const = 0;
 
-		virtual void SetDensity(IScalar2DPtr value) = 0;
-		virtual void SetSpecificHeat(IScalar2DPtr value) = 0;
-		virtual void SetThermalConductivity(IScalar2DPtr value) = 0;
+		virtual void SetDensity(IScalarCoordinatesPtr value) = 0;
+		virtual void SetSpecificHeat(IScalarCoordinatesPtr value) = 0;
+		virtual void SetThermalConductivity(IScalarCoordinatesPtr value) = 0;
 
-		virtual Matrix K(Scalar temperature, Scalar pressure) const = 0;
+		virtual Matrix K(const Vector& state) const = 0;
 	};
 
 	class IMaterialFluid;
@@ -62,10 +62,10 @@ namespace material
 	public:
 		virtual ~IMaterialFluid() = default;
 
-		virtual Scalar GetDynamicViscosity(Scalar temperature, Scalar pressure) const = 0;
-		virtual void SetDynamicViscosity(IScalar2DPtr value) = 0;
+		virtual Scalar GetDynamicViscosity(const Vector& state) const = 0;
+		virtual void SetDynamicViscosity(IScalarCoordinatesPtr value) = 0;
 
-		virtual Matrix D(Scalar temperature, Scalar pressure) const = 0;
+		virtual Matrix D(const Vector& state) const = 0;
 	};
 
 	class IMaterialSolid;
@@ -77,16 +77,16 @@ namespace material
 	public:
 		virtual ~IMaterialSolid() = default;
 
-		virtual Scalar GetPoissonRatio(Scalar temperature, Scalar pressure) const = 0;
-		virtual Scalar GetThermalExpansion(Scalar temperature, Scalar pressure) const = 0;
-		virtual Scalar GetElasticModulus(Scalar temperature, Scalar pressure) const = 0;
+		virtual Scalar GetPoissonRatio(const Vector& state) const = 0;
+		virtual Scalar GetThermalExpansion(const Vector& state) const = 0;
+		virtual Scalar GetElasticModulus(const Vector& state) const = 0;
 
-		virtual void SetPoissonRatio(IScalar2DPtr value) = 0;
-		virtual void SetThermalExpansion(IScalar2DPtr value) = 0;
-		virtual void SetElasticModulus(IScalar2DPtr value) = 0;
+		virtual void SetPoissonRatio(IScalarCoordinatesPtr value) = 0;
+		virtual void SetThermalExpansion(IScalarCoordinatesPtr value) = 0;
+		virtual void SetElasticModulus(IScalarCoordinatesPtr value) = 0;
 
-		virtual Matrix A(Scalar temperature, Scalar pressure) const = 0;
-		virtual Matrix D(Scalar temperature, Scalar pressure) const = 0;
+		virtual Matrix A(const Vector& state) const = 0;
+		virtual Matrix D(const Vector& state) const = 0;
 	};
 
 } // namespace material

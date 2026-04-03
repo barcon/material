@@ -29,10 +29,10 @@ namespace material
 		String GetDescription() const override;
 		String GetName() const override;
 
-		Scalar GetDensity(Scalar temperature, Scalar pressure) const override;
-		Scalar GetSpecificHeat(Scalar temperature, Scalar pressure) const override;
-		Scalar GetThermalConductivity(Scalar temperature, Scalar pressure) const override;
-		Scalar GetDynamicViscosity(Scalar temperature, Scalar pressure) const override;
+		Scalar GetDensity(const Vector& state) const override;
+		Scalar GetSpecificHeat(const Vector& state) const override;
+		Scalar GetThermalConductivity(const Vector& state) const override;
+		Scalar GetDynamicViscosity(const Vector& state) const override;
 		IValuePtr GetProperty(String key) const override;
 
 		void SetClass(IStringPtr value) override;
@@ -41,14 +41,14 @@ namespace material
 		void SetName(IStringPtr value) override;
 		void SetTag(const Tag& tag) override;
 
-		void SetDensity(IScalar2DPtr value) override;
-		void SetSpecificHeat(IScalar2DPtr value) override;
-		void SetThermalConductivity(IScalar2DPtr value) override;
-		void SetDynamicViscosity(IScalar2DPtr value) override;
+		void SetDensity(IScalarCoordinatesPtr value) override;
+		void SetSpecificHeat(IScalarCoordinatesPtr value) override;
+		void SetThermalConductivity(IScalarCoordinatesPtr value) override;
+		void SetDynamicViscosity(IScalarCoordinatesPtr value) override;
 		void SetProperty(IValuePtr value) override;
 
-		Matrix D(Scalar temperature, Scalar pressure) const override;
-		Matrix K(Scalar temperature, Scalar pressure) const override;
+		Matrix D(const Vector& state) const override;
+		Matrix K(const Vector& state) const override;
 
 	protected:
 		MaterialFluid();
@@ -65,10 +65,10 @@ namespace material
 		IStringPtr description_{ nullptr };
 		IStringPtr name_{ nullptr };
 
-		IScalar2DPtr density_{ nullptr };
-		IScalar2DPtr specificHeat_{ nullptr };
-		IScalar2DPtr thermalConductivity_{ nullptr };
-		IScalar2DPtr dynamicViscosity_{ nullptr };
+		IScalarCoordinatesPtr density_{ nullptr };
+		IScalarCoordinatesPtr specificHeat_{ nullptr };
+		IScalarCoordinatesPtr thermalConductivity_{ nullptr };
+		IScalarCoordinatesPtr dynamicViscosity_{ nullptr };
 
 		Properties properties_;
 	};
