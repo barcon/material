@@ -5,8 +5,7 @@
 
 namespace material
 {
-	static const Type material_solid = 1;
-	static const Type material_fluid = 2;
+	Vector CreateState(Scalar temperature, Scalar pressure);
 
 	class IBase;
 	using IBasePtr = std::shared_ptr<IBase>;

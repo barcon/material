@@ -37,10 +37,14 @@ namespace material
 	using Properties = std::unordered_map<String, IValuePtr>;
 
 	using Tag = std::size_t;
-	using Type = std::size_t;
 	using Status = long long int;
 
 	const String headerMaterial = "MATERIAL";
+
+	using Type = std::size_t;
+	static const Type material_solid = 1;
+	static const Type material_fluid = 2;
+
 } // namespace material
 
 #endif /* MATERIAL_TYPES_HPP_*/
