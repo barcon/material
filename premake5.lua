@@ -16,7 +16,7 @@ project "material"
 	includedirs { "../node/src" }	
 	includedirs { "../kdtree/src" }	
 	includedirs { "../interpolation/src" }	
-	includedirs { "../values/src" }
+	includedirs { "../value/src" }
 
 	files { "src/**.hpp", "src/**.cpp" }
 

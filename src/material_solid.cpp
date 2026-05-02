@@ -3,7 +3,7 @@
 
 namespace material
 {
-	MaterialSolidPtr CreateMaterialSolid(Tag materialTag)
+	MaterialSolidPtr CreateSolid(Tag materialTag)
 	{
 		auto res = MaterialSolid::Create();
 
@@ -11,59 +11,59 @@ namespace material
 
 		return res;
 	}
-	MaterialSolidPtr CreateMaterialSolidUnit(Tag materialTag)
+	MaterialSolidPtr CreateSolidUnit(Tag materialTag)
 	{
 		auto res = MaterialSolid::Create();
 
 		res->SetTag(materialTag);
-		res->SetDensity(values::CreateValueScalarCoordinates(2, 1.0));
-		res->SetSpecificHeat(values::CreateValueScalarCoordinates(2, 1.0));
-		res->SetPoissonRatio(values::CreateValueScalarCoordinates(2, 1.0));
-		res->SetElasticModulus(values::CreateValueScalarCoordinates(2, 1.0));
-		res->SetThermalExpansion(values::CreateValueScalarCoordinates(2, 1.0));
-		res->SetThermalConductivity(values::CreateValueScalarCoordinates(2, 1.0));
+		res->SetDensity(value::CreateValueScalarCoordinates(2, 1.0));
+		res->SetSpecificHeat(value::CreateValueScalarCoordinates(2, 1.0));
+		res->SetPoissonRatio(value::CreateValueScalarCoordinates(2, 1.0));
+		res->SetElasticModulus(value::CreateValueScalarCoordinates(2, 1.0));
+		res->SetThermalExpansion(value::CreateValueScalarCoordinates(2, 1.0));
+		res->SetThermalConductivity(value::CreateValueScalarCoordinates(2, 1.0));
 
 		return res;
 	}
 	MaterialSolid::MaterialSolid()
 	{
-		class_ = values::CreateValueString("");
+		class_ = value::CreateValueString("");
 		class_->SetName("Class");
 		class_->SetKey("class");
 
-		group_ = values::CreateValueString("");
+		group_ = value::CreateValueString("");
 		group_->SetName("Group");
 		group_->SetKey("group");
 
-		description_ = values::CreateValueString("");
+		description_ = value::CreateValueString("");
 		description_->SetName("Description");
 		description_->SetKey("description");
 
-		name_ = values::CreateValueString("");
+		name_ = value::CreateValueString("");
 		name_->SetName("Name");
 		name_->SetKey("name");
 		
-		density_ = values::CreateValueScalarCoordinates(2, 0.0);
+		density_ = value::CreateValueScalarCoordinates(2, 0.0);
 		density_->SetName("Density");
 		density_->SetKey("rho");
 
-		specificHeat_ = values::CreateValueScalarCoordinates(2, 0.0);
+		specificHeat_ = value::CreateValueScalarCoordinates(2, 0.0);
 		specificHeat_->SetName("Specific Heat");
 		specificHeat_->SetKey("cp");
 
-		thermalConductivity_ = values::CreateValueScalarCoordinates(2, 0.0);
+		thermalConductivity_ = value::CreateValueScalarCoordinates(2, 0.0);
 		thermalConductivity_->SetName("Thermal Conductivity");
 		thermalConductivity_->SetKey("k");
 		
-		poissonRatio_ = values::CreateValueScalarCoordinates(2, 0.0);
+		poissonRatio_ = value::CreateValueScalarCoordinates(2, 0.0);
 		poissonRatio_->SetName("Poisson's Ratio");
 		poissonRatio_->SetKey("nu");
 
-		thermalExpansion_ = values::CreateValueScalarCoordinates(2, 0.0);
+		thermalExpansion_ = value::CreateValueScalarCoordinates(2, 0.0);
 		thermalExpansion_->SetName("Coefficient Thermal Expansion");
 		thermalExpansion_->SetKey("alpha");
 
-		elasticModulus_ = values::CreateValueScalarCoordinates(2, 0.0);
+		elasticModulus_ = value::CreateValueScalarCoordinates(2, 0.0);
 		elasticModulus_->SetName("Young's Modulus");
 		elasticModulus_->SetKey("E");
 	}

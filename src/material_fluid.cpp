@@ -2,7 +2,7 @@
 
 namespace material
 {
-	MaterialFluidPtr CreateMaterialFluid(Tag materialTag)
+	MaterialFluidPtr CreateFluid(Tag materialTag)
 	{
 		auto res = MaterialFluid::Create();
 
@@ -10,49 +10,49 @@ namespace material
 
 		return res;
 	}
-	MaterialFluidPtr CreateMaterialFluidUnit(Tag materialTag)
+	MaterialFluidPtr CreateFluidUnit(Tag materialTag)
 	{
 		auto res = MaterialFluid::Create();
 
 		res->SetTag(materialTag);
-		res->SetDensity(values::CreateValueScalarCoordinates(2, 1.0));
-		res->SetSpecificHeat(values::CreateValueScalarCoordinates(2, 1.0));
-		res->SetThermalConductivity(values::CreateValueScalarCoordinates(2, 1.0));
-		res->SetDynamicViscosity(values::CreateValueScalarCoordinates(2, 1.0));
+		res->SetDensity(value::CreateValueScalarCoordinates(2, 1.0));
+		res->SetSpecificHeat(value::CreateValueScalarCoordinates(2, 1.0));
+		res->SetThermalConductivity(value::CreateValueScalarCoordinates(2, 1.0));
+		res->SetDynamicViscosity(value::CreateValueScalarCoordinates(2, 1.0));
 
 		return res;
 	}
 	MaterialFluid::MaterialFluid()
 	{
-		class_ = values::CreateValueString("");
+		class_ = value::CreateValueString("");
 		class_->SetName("Class");
 		class_->SetKey("class");
 
-		group_ = values::CreateValueString("");
+		group_ = value::CreateValueString("");
 		group_->SetName("Group");
 		group_->SetKey("group");
 
-		description_ = values::CreateValueString("");
+		description_ = value::CreateValueString("");
 		description_->SetName("Description");
 		description_->SetKey("description");
 
-		name_ = values::CreateValueString("");
+		name_ = value::CreateValueString("");
 		name_->SetName("Name");
 		name_->SetKey("name");
 
-		density_ = values::CreateValueScalarCoordinates(2, 0.0);
+		density_ = value::CreateValueScalarCoordinates(2, 0.0);
 		density_->SetName("Density");
 		density_->SetKey("rho");
 
-		specificHeat_ = values::CreateValueScalarCoordinates(2, 0.0);
+		specificHeat_ = value::CreateValueScalarCoordinates(2, 0.0);
 		specificHeat_->SetName("Specific Heat");
 		specificHeat_->SetKey("cp");
 
-		thermalConductivity_ = values::CreateValueScalarCoordinates(2, 0.0);
+		thermalConductivity_ = value::CreateValueScalarCoordinates(2, 0.0);
 		thermalConductivity_->SetName("Thermal Conductivity");
 		thermalConductivity_->SetKey("k");
 
-		dynamicViscosity_ = values::CreateValueScalarCoordinates(2, 0.0);
+		dynamicViscosity_ = value::CreateValueScalarCoordinates(2, 0.0);
 		dynamicViscosity_->SetName("Dynamic Viscosity");
 		dynamicViscosity_->SetKey("mu");
 

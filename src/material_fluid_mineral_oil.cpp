@@ -66,15 +66,15 @@ namespace material
 		auto res = MaterialFluid::Create();
 
 		res->SetTag(materialTag);
-		res->SetClass(values::CreateValueString("Fluid"));
-		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
-		res->SetDescription(values::CreateValueString("Oil ISO VG 32"));
-		res->SetName(values::CreateValueString("Oil ISO VG 32"));
+		res->SetClass(value::CreateValueString("Fluid"));
+		res->SetGroup(value::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(value::CreateValueString("Oil ISO VG 32"));
+		res->SetName(value::CreateValueString("Oil ISO VG 32"));
 
-		res->SetSpecificHeat(values::CreateValueScalarCoordinatesFunction(& SpecificHeatOil));
-		res->SetDensity(values::CreateValueScalarCoordinatesFunction(&DensityOil));
-		res->SetDynamicViscosity(values::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG32));
-		res->SetThermalConductivity(values::CreateValueScalarCoordinatesFunction(&ThermalConductivityOil));
+		res->SetSpecificHeat(value::CreateValueScalarCoordinatesFunction(& SpecificHeatOil));
+		res->SetDensity(value::CreateValueScalarCoordinatesFunction(&DensityOil));
+		res->SetDynamicViscosity(value::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG32));
+		res->SetThermalConductivity(value::CreateValueScalarCoordinatesFunction(&ThermalConductivityOil));
 
 		return res;
 	}
@@ -83,15 +83,15 @@ namespace material
 		auto res = MaterialFluid::Create();
 
 		res->SetTag(materialTag);
-		res->SetClass(values::CreateValueString("Fluid"));
-		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
-		res->SetDescription(values::CreateValueString("Oil ISO VG 32"));
-		res->SetName(values::CreateValueString("Oil ISO VG 32"));
+		res->SetClass(value::CreateValueString("Fluid"));
+		res->SetGroup(value::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(value::CreateValueString("Oil ISO VG 32"));
+		res->SetName(value::CreateValueString("Oil ISO VG 32"));
 
-		res->SetSpecificHeat(values::CreateValueScalarCoordinates(2, SpecificHeatOil(T_ref, p_ref)));
-		res->SetDensity(values::CreateValueScalarCoordinates(2, DensityOil(T_ref, p_ref)));
-		res->SetDynamicViscosity(values::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG32));
-		res->SetThermalConductivity(values::CreateValueScalarCoordinates(2, ThermalConductivityOil(T_ref, p_ref)));
+		res->SetSpecificHeat(value::CreateValueScalarCoordinates(2, SpecificHeatOil(T_ref, p_ref)));
+		res->SetDensity(value::CreateValueScalarCoordinates(2, DensityOil(T_ref, p_ref)));
+		res->SetDynamicViscosity(value::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG32));
+		res->SetThermalConductivity(value::CreateValueScalarCoordinates(2, ThermalConductivityOil(T_ref, p_ref)));
 
 		return res;
 	}
@@ -101,15 +101,15 @@ namespace material
 		auto res = MaterialFluid::Create();
 
 		res->SetTag(materialTag);
-		res->SetClass(values::CreateValueString("Fluid"));
-		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
-		res->SetDescription(values::CreateValueString("Oil ISO VG 46"));
-		res->SetName(values::CreateValueString("Oil ISO VG 46"));
+		res->SetClass(value::CreateValueString("Fluid"));
+		res->SetGroup(value::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(value::CreateValueString("Oil ISO VG 46"));
+		res->SetName(value::CreateValueString("Oil ISO VG 46"));
 
-		res->SetSpecificHeat(values::CreateValueScalarCoordinatesFunction(&SpecificHeatOil));
-		res->SetDensity(values::CreateValueScalarCoordinatesFunction(&DensityOil));
-		res->SetDynamicViscosity(values::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG46));
-		res->SetThermalConductivity(values::CreateValueScalarCoordinatesFunction(&ThermalConductivityOil));
+		res->SetSpecificHeat(value::CreateValueScalarCoordinatesFunction(&SpecificHeatOil));
+		res->SetDensity(value::CreateValueScalarCoordinatesFunction(&DensityOil));
+		res->SetDynamicViscosity(value::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG46));
+		res->SetThermalConductivity(value::CreateValueScalarCoordinatesFunction(&ThermalConductivityOil));
 
 		return res;
 	}
@@ -118,15 +118,15 @@ namespace material
 		auto res = MaterialFluid::Create();
 
 		res->SetTag(materialTag);
-		res->SetClass(values::CreateValueString("Fluid"));
-		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
-		res->SetDescription(values::CreateValueString("Oil ISO VG 46"));
-		res->SetName(values::CreateValueString("Oil ISO VG 46"));
+		res->SetClass(value::CreateValueString("Fluid"));
+		res->SetGroup(value::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(value::CreateValueString("Oil ISO VG 46"));
+		res->SetName(value::CreateValueString("Oil ISO VG 46"));
 
-		res->SetSpecificHeat(values::CreateValueScalarCoordinates(2, SpecificHeatOil(T_ref, p_ref)));
-		res->SetDensity(values::CreateValueScalarCoordinates(2, DensityOil(T_ref, p_ref)));
-		res->SetDynamicViscosity(values::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG46));
-		res->SetThermalConductivity(values::CreateValueScalarCoordinates(2, ThermalConductivityOil(T_ref, p_ref)));
+		res->SetSpecificHeat(value::CreateValueScalarCoordinates(2, SpecificHeatOil(T_ref, p_ref)));
+		res->SetDensity(value::CreateValueScalarCoordinates(2, DensityOil(T_ref, p_ref)));
+		res->SetDynamicViscosity(value::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG46));
+		res->SetThermalConductivity(value::CreateValueScalarCoordinates(2, ThermalConductivityOil(T_ref, p_ref)));
 
 		return res;
 	}
@@ -136,15 +136,15 @@ namespace material
 		auto res = MaterialFluid::Create();
 
 		res->SetTag(materialTag);
-		res->SetClass(values::CreateValueString("Fluid"));
-		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
-		res->SetDescription(values::CreateValueString("Oil ISO VG 68"));
-		res->SetName(values::CreateValueString("Oil ISO VG 68"));
+		res->SetClass(value::CreateValueString("Fluid"));
+		res->SetGroup(value::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(value::CreateValueString("Oil ISO VG 68"));
+		res->SetName(value::CreateValueString("Oil ISO VG 68"));
 
-		res->SetSpecificHeat(values::CreateValueScalarCoordinatesFunction(&SpecificHeatOil));
-		res->SetDensity(values::CreateValueScalarCoordinatesFunction(&DensityOil));
-		res->SetDynamicViscosity(values::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG68));
-		res->SetThermalConductivity(values::CreateValueScalarCoordinatesFunction(&ThermalConductivityOil));
+		res->SetSpecificHeat(value::CreateValueScalarCoordinatesFunction(&SpecificHeatOil));
+		res->SetDensity(value::CreateValueScalarCoordinatesFunction(&DensityOil));
+		res->SetDynamicViscosity(value::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG68));
+		res->SetThermalConductivity(value::CreateValueScalarCoordinatesFunction(&ThermalConductivityOil));
 
 		return res;
 	}
@@ -153,15 +153,15 @@ namespace material
 		auto res = MaterialFluid::Create();
 
 		res->SetTag(materialTag);
-		res->SetClass(values::CreateValueString("Fluid"));
-		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
-		res->SetDescription(values::CreateValueString("Oil ISO VG 68"));
-		res->SetName(values::CreateValueString("Oil ISO VG 68"));
+		res->SetClass(value::CreateValueString("Fluid"));
+		res->SetGroup(value::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(value::CreateValueString("Oil ISO VG 68"));
+		res->SetName(value::CreateValueString("Oil ISO VG 68"));
 
-		res->SetSpecificHeat(values::CreateValueScalarCoordinates(2, SpecificHeatOil(T_ref, p_ref)));
-		res->SetDensity(values::CreateValueScalarCoordinates(2, DensityOil(T_ref, p_ref)));
-		res->SetDynamicViscosity(values::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG68));
-		res->SetThermalConductivity(values::CreateValueScalarCoordinates(2, ThermalConductivityOil(T_ref, p_ref)));
+		res->SetSpecificHeat(value::CreateValueScalarCoordinates(2, SpecificHeatOil(T_ref, p_ref)));
+		res->SetDensity(value::CreateValueScalarCoordinates(2, DensityOil(T_ref, p_ref)));
+		res->SetDynamicViscosity(value::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG68));
+		res->SetThermalConductivity(value::CreateValueScalarCoordinates(2, ThermalConductivityOil(T_ref, p_ref)));
 
 		return res;
 	}
@@ -171,15 +171,15 @@ namespace material
 		auto res = MaterialFluid::Create();
 
 		res->SetTag(materialTag);
-		res->SetClass(values::CreateValueString("Fluid"));
-		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
-		res->SetDescription(values::CreateValueString("Oil ISO VG 100"));
-		res->SetName(values::CreateValueString("Oil ISO VG 100"));
+		res->SetClass(value::CreateValueString("Fluid"));
+		res->SetGroup(value::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(value::CreateValueString("Oil ISO VG 100"));
+		res->SetName(value::CreateValueString("Oil ISO VG 100"));
 
-		res->SetSpecificHeat(values::CreateValueScalarCoordinatesFunction(&SpecificHeatOil));
-		res->SetDensity(values::CreateValueScalarCoordinatesFunction(&DensityOil));
-		res->SetDynamicViscosity(values::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG100));
-		res->SetThermalConductivity(values::CreateValueScalarCoordinatesFunction(&ThermalConductivityOil));
+		res->SetSpecificHeat(value::CreateValueScalarCoordinatesFunction(&SpecificHeatOil));
+		res->SetDensity(value::CreateValueScalarCoordinatesFunction(&DensityOil));
+		res->SetDynamicViscosity(value::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG100));
+		res->SetThermalConductivity(value::CreateValueScalarCoordinatesFunction(&ThermalConductivityOil));
 
 		return res;
 	}
@@ -188,15 +188,15 @@ namespace material
 		auto res = MaterialFluid::Create();
 
 		res->SetTag(materialTag);
-		res->SetClass(values::CreateValueString("Fluid"));
-		res->SetGroup(values::CreateValueString("Mineral Hydraulic Oil"));
-		res->SetDescription(values::CreateValueString("Oil ISO VG 100"));
-		res->SetName(values::CreateValueString("Oil ISO VG 100"));
+		res->SetClass(value::CreateValueString("Fluid"));
+		res->SetGroup(value::CreateValueString("Mineral Hydraulic Oil"));
+		res->SetDescription(value::CreateValueString("Oil ISO VG 100"));
+		res->SetName(value::CreateValueString("Oil ISO VG 100"));
 
-		res->SetSpecificHeat(values::CreateValueScalarCoordinates(2, SpecificHeatOil(T_ref, p_ref)));
-		res->SetDensity(values::CreateValueScalarCoordinates(2, DensityOil(T_ref, p_ref)));
-		res->SetDynamicViscosity(values::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG100));
-		res->SetThermalConductivity(values::CreateValueScalarCoordinates(2, ThermalConductivityOil(T_ref, p_ref)));
+		res->SetSpecificHeat(value::CreateValueScalarCoordinates(2, SpecificHeatOil(T_ref, p_ref)));
+		res->SetDensity(value::CreateValueScalarCoordinates(2, DensityOil(T_ref, p_ref)));
+		res->SetDynamicViscosity(value::CreateValueScalarCoordinatesFunction(&DynamicViscosityOilVG100));
+		res->SetThermalConductivity(value::CreateValueScalarCoordinates(2, ThermalConductivityOil(T_ref, p_ref)));
 
 		return res;
 	}

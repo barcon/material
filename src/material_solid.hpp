@@ -9,8 +9,8 @@ namespace material
 	using MaterialSolidPtr = std::shared_ptr< MaterialSolid >;
 	using ConstMaterialSolidPtr = std::shared_ptr< const MaterialSolid >;
 
-	MaterialSolidPtr CreateMaterialSolid(Tag materialTag);
-	MaterialSolidPtr CreateMaterialSolidUnit(Tag materialTag);
+	MaterialSolidPtr CreateSolid(Tag materialTag);
+	MaterialSolidPtr CreateSolidUnit(Tag materialTag);
 
 	class MaterialSolid : public IMaterialSolid, virtual public std::enable_shared_from_this<MaterialSolid>
 	{

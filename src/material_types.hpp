@@ -4,7 +4,7 @@
 #include "utils.hpp"
 #include "logger.hpp"
 #include "eilig.hpp"
-#include "values.hpp"
+#include "value.hpp"
 
 #include <memory>
 #include <variant>
@@ -22,17 +22,17 @@ namespace material
 	using String = utils::String;
 	using Strings = utils::Strings;
 
-	using IValuePtr = values::IValuePtr;
-	using IBoolPtr = values::IBoolPtr;
-	using IStringPtr = values::IStringPtr;
+	using IValuePtr = value::IValuePtr;
+	using IBoolPtr = value::IBoolPtr;
+	using IStringPtr = value::IStringPtr;
 
-	using IScalarPtr = values::IScalarPtr;
-	using IVectorPtr = values::IVectorPtr;
-	using IMatrixPtr = values::IMatrixPtr;
+	using IScalarPtr = value::IScalarPtr;
+	using IVectorPtr = value::IVectorPtr;
+	using IMatrixPtr = value::IMatrixPtr;
 
-	using IScalarCoordinatesPtr = values::IScalarCoordinatesPtr;
-	using IVectorCoordinatesPtr = values::IVectorCoordinatesPtr;
-	using IMatrixCoordinatesPtr = values::IMatrixCoordinatesPtr;
+	using IScalarCoordinatesPtr = value::IScalarCoordinatesPtr;
+	using IVectorCoordinatesPtr = value::IVectorCoordinatesPtr;
+	using IMatrixCoordinatesPtr = value::IMatrixCoordinatesPtr;
 	
 	using Properties = std::unordered_map<String, IValuePtr>;
 
