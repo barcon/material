@@ -16,12 +16,6 @@ namespace material
 		auto res = MaterialSolid::Create();
 
 		res->SetTag(materialTag);
-		res->SetDensity(value::CreateValueScalarCoordinates(2, 1.0));
-		res->SetSpecificHeat(value::CreateValueScalarCoordinates(2, 1.0));
-		res->SetPoissonRatio(value::CreateValueScalarCoordinates(2, 1.0));
-		res->SetElasticModulus(value::CreateValueScalarCoordinates(2, 1.0));
-		res->SetThermalExpansion(value::CreateValueScalarCoordinates(2, 1.0));
-		res->SetThermalConductivity(value::CreateValueScalarCoordinates(2, 1.0));
 
 		return res;
 	}

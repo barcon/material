@@ -15,10 +15,6 @@ namespace material
 		auto res = MaterialFluid::Create();
 
 		res->SetTag(materialTag);
-		res->SetDensity(value::CreateValueScalarCoordinates(2, 1.0));
-		res->SetSpecificHeat(value::CreateValueScalarCoordinates(2, 1.0));
-		res->SetThermalConductivity(value::CreateValueScalarCoordinates(2, 1.0));
-		res->SetDynamicViscosity(value::CreateValueScalarCoordinates(2, 1.0));
 
 		return res;
 	}
