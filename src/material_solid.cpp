@@ -83,7 +83,7 @@ namespace material
 	{
 		return tag_;
 	}
-	Type MaterialSolid::GetType() const
+	MaterialType MaterialSolid::GetType() const
 	{
 		return type_;
 	}
@@ -248,7 +248,7 @@ namespace material
 	}
 	Matrix MaterialSolid::A(const Vector& state) const
 	{
-		Matrix res(6, 1, eilig::matrix_zeros);
+		Matrix res(6, 1, MatrixType::zeros);
 
 		res(0, 0) = GetThermalExpansion(state);
 		res(1, 0) = res(0, 0);
@@ -261,7 +261,7 @@ namespace material
 		Scalar d;
 		Scalar nu = GetPoissonRatio(state);
 		Scalar E = GetElasticModulus(state);
-		Matrix res(6, 6, eilig::matrix_zeros);
+		Matrix res(6, 6, MatrixType::zeros);
 
 		d = (1.0 + nu) * (1.0 - 2.0 * nu);
 
@@ -284,7 +284,7 @@ namespace material
 	}
 	Matrix MaterialSolid::K(const Vector& state) const
 	{
-		Matrix res(3, 3, eilig::matrix_zeros);
+		Matrix res(3, 3, MatrixType::zeros);
 
 		res(0, 0) = GetThermalConductivity(state);
 		res(1, 1) = res(0, 0);

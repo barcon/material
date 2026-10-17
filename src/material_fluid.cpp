@@ -52,12 +52,12 @@ namespace material
 		dynamicViscosity_->SetName("Dynamic Viscosity");
 		dynamicViscosity_->SetKey("mu");
 
-		m_ = Matrix(6, 1, eilig::matrix_zeros);
+		m_ = Matrix(6, 1, MatrixType::zeros);
 		m_(0, 0) = 1.0;
 		m_(1, 0) = 1.0;
 		m_(2, 0) = 1.0;
 
-		I0_ = Matrix(6, 6, eilig::matrix_zeros);
+		I0_ = Matrix(6, 6, MatrixType::zeros);
 		I0_(0, 0) = 2.0;
 		I0_(1, 1) = 2.0;
 		I0_(2, 2) = 2.0;
@@ -89,7 +89,7 @@ namespace material
 	{
 		return tag_;
 	}
-	Type MaterialFluid::GetType() const
+	MaterialType MaterialFluid::GetType() const
 	{
 		return type_;
 	}
@@ -224,7 +224,7 @@ namespace material
 	}
 	Matrix MaterialFluid::K(const Vector& state) const
 	{
-		Matrix res(3, 3, eilig::matrix_zeros);
+		Matrix res(3, 3, MatrixType::zeros);
 
 		res(0, 0) = GetThermalConductivity(state);
 		res(1, 1) = GetThermalConductivity(state);

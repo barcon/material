@@ -22,7 +22,7 @@ namespace material
 		ConstMaterialSolidPtr GetPtr() const;
 
 		Tag GetTag() const override;
-		Type GetType() const override;
+		MaterialType GetType() const override;
 		String GetClass() const override;
 		String GetGroup() const override;
 		String GetDescription() const override;
@@ -58,7 +58,7 @@ namespace material
 		MaterialSolid();
 
 		Tag tag_ { 0 };
-		Type type_{ material_solid };
+		MaterialType type_{ MaterialType::solid };
 
 		IStringPtr class_{ nullptr };
 		IStringPtr group_{ nullptr };

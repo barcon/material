@@ -17,7 +17,7 @@ namespace material
 		virtual ~IBase() = default;
 
 		virtual Tag GetTag() const = 0;
-		virtual Type GetType() const = 0;
+		virtual MaterialType GetType() const = 0;
 		virtual String GetClass() const = 0;
 		virtual String GetGroup() const = 0;
 		virtual String GetDescription() const = 0;
